@@ -1,17 +1,15 @@
 """
 Jhonatan da Silva
 Last Updated version :
-Sun Apr  2 17:55:26 2017
+Sun Apr  2 17:59:33 2017
 Number of code lines: 
-75
+70
 """
 import matplotlib.animation as animation
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib import style
 style.use('ggplot')
-
-
 
 def createMesh(xRange,yRange):
     mesh = []
@@ -23,7 +21,6 @@ def createMesh(xRange,yRange):
             mesh.append([-i,j])
             mesh.append([i,-j])
             mesh.append([-i,-j])
-    print(mesh)
     return mesh
 
 fig = plt.figure()
@@ -36,8 +33,6 @@ points = createMesh(10,10)
 def F(values):
     x = values[0]
     y = values[1]
-    #fx = 2*x
-    #fy = 2*y
     fx = -y
     fy = x
 
@@ -67,6 +62,7 @@ def livePlot(i):
     plt.quiver(p[0],p[1],p[2],p[3],headlength=4,\
                edgecolor='k',linewidth=.5,\
                alpha=0.5,color=color)
+    plt.scatter(p[0],p[1],color='k',s=10)
     if j == maxValue:
         j = 0
         ax.clear()
@@ -79,4 +75,3 @@ def makeAnimation():
     plt.show()
 
 makeAnimation()
-
